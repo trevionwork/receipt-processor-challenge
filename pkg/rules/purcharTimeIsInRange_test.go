@@ -33,7 +33,7 @@ func TestNewPurchaseTimeIsInRangeAfterTime(t *testing.T) {
 func TestNewPurchaseTimeIsInRange(t *testing.T) {
 	rule := NewDefaultPurchaseTimeIsInRange()
 	receipt := models.Receipt{
-		PurchaseTime: "16:05",
+		PurchaseTime: "15:55",
 	}
 
 	desc := rule.DescribePoints(&receipt, true)
