@@ -12,6 +12,17 @@ type PointsService struct {
 func NewPointsService(rules ...rules.PointComputationRule) *PointsService {
 	return &PointsService{rules: rules}
 }
+func NewDefaultPointsService() *PointsService {
+	return NewPointsService(
+		rules.NewDefaultRetailerName(),
+		rules.NewDefaultTotalHaveNoCents(),
+		rules.NewDefaultTotalIsAMultipleOfNCents(),
+		rules.NewDefaultPointsForEveryNItems(),
+		rules.NewDefaultItemDesciptionLength(),
+		rules.NewDefaultPurchaseDate(),
+		rules.NewDefaultPurchaseTimeIsInRange(),
+	)
+}
 
 func (svc *PointsService) ComputePoints(receipt *models.Receipt) int {
 	points := 0
